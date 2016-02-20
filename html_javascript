@@ -1,0 +1,25 @@
+<p>Name: <input type="text" id="name"></p>
+<p>Gender: <input type="radio" name="gender" value="Male">Male <input type="radio" name="gender" value="Female">Female</p>
+<p><button type="submit" onclick="addButtonClick()">Add</button></p>
+<ol id="show"></ol>
+<script>
+function addButtonClick(){
+   var rads=document.getElementsByName('gender');
+   var fname=document.getElementById('name').value;
+   for(var i=0; i < rads.length; i++)
+   {
+     if(rads[i].checked)
+     {
+       var stringOld = document.getElementById('show').innerHTML;
+	   
+       var inlineFunc = 'this.parentNode.parentNode.removeChild(this.parentNode);';
+       var button = '<button  onClick="'+ inlineFunc +'"> Delete </button>';
+       var stringNew = '<li>'+ fname +'_'+ rads[i].value + button +'</li>';
+       
+       document.getElementById('show').innerHTML = stringOld + stringNew ;
+       break;
+     }
+   }
+}
+
+</script>
